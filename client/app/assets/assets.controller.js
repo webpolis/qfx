@@ -6,6 +6,12 @@ function assetsCtl($scope, $reactive, assetsSvc) {
   const vm = this;
   let reactiveCtx = $reactive(vm).attach($scope);
 
+  vm.helpers({
+    assets: () => {
+      return assetsSvc.list({});
+    }
+  })
+
   init();
 
   function init() {

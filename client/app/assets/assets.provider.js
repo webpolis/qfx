@@ -18,6 +18,9 @@ function assetsPvd() {
         if (context != null) {
           context.subscribe(subscriptions.list);
         }
+      },
+      list: function(conditions = {}) {
+        return Repositories.assets.find(conditions);
       }
     }
   }

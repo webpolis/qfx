@@ -1,3 +1,15 @@
 <div class="ui basic segment" ng-controller="assetsCtl as assets">
-
+    <div class="ui cards">
+        <div class="card" ng-repeat="asset in assets.assets">
+            <div class="content">
+                <div class="header">{{asset.name}}</div>
+                <div ng-if="asset.description" class="description">
+                    {{asset.description}}
+                </div>
+            </div>
+            <div class="ui bottom attached button">
+                <i class="add icon"></i> Add to Portfolio
+            </div>
+        </div>
+    </div>
 </div>
