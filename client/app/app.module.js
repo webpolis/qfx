@@ -1,23 +1,22 @@
 angular
-  .module('app', ['angular-meteor', 'accounts.ui', 'app.markets.controllers', 'app.markets.services'])
+  .module('app', ['angular-meteor', 'accounts.ui', 'app.assets.controllers', 'app.assets.services'])
   .config(config)
   .run(bootstrap);
 
-config.$inject = ['marketsSvcProvider'];
+config.$inject = ['assetsSvcProvider'];
 
-function config(marketsSvcProvider) {
+function config(assetsSvcProvider) {
   // subscriptions
   let subscriptions = {
-    markets: {
-      list: 'markets.list'
+    assets: {
+      list: 'assets.list'
     }
   };
 
-  marketsSvcProvider.setSubscriptions(subscriptions.markets);
+  assetsSvcProvider.setSubscriptions(subscriptions.assets);
 }
 
 function bootstrap() {
-
   // init UI
   $(document).ready(function() {
     $('.ui.sidebar').sidebar().sidebar('attach events', '.top.attached.menu .item:first-child');

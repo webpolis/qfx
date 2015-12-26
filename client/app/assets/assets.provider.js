@@ -1,18 +1,18 @@
 angular
-  .module('app.markets.services', ['app'])
-  .provider('marketsSvc', marketsPvd);
+  .module('app.assets.services', ['app'])
+  .provider('assetsSvc', assetsPvd);
 
-function marketsPvd() {
+function assetsPvd() {
   var subscriptions = {};
 
   return {
     setSubscriptions: function(endpoints) {
       subscriptions = endpoints;
     },
-    $get: marketsSvc
+    $get: assetsSvc
   };
 
-  function marketsSvc() {
+  function assetsSvc() {
     return {
       init: function(context = null) {
         if (context != null) {
