@@ -10,7 +10,9 @@ from './importers/etoro';
 
 export default function init() {
   // publish
-  Meteor.publish('assets.list', () => repositories.assets.find({}));
+  Meteor.publish('assets.list', () => repositories.assets.find({
+    active: true
+  }));
 
   // import assets
   let etoroInstruments = new etoroImporter({
