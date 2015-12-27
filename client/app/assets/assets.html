@@ -16,7 +16,7 @@
         <div class="column">
             <div class="ui fluid container">
                 <div class="ui cards">
-                    <div class="card" ng-repeat="asset in assets.assets | filter:query | orderBy:['type', 'name']">
+                    <div class="card" ng-repeat="asset in assets.assets | filter:assets.search | orderBy:['type', 'name']">
                         <div class="content">
                             <div class="header">{{asset.name}}</div>
                             <div ng-if="asset.type === 'stock'" class="ui teal right ribbon label">
