@@ -3,10 +3,11 @@ import {
   default as secureRepositories
 }
 from './security';
+
 import {
-  default as etoroImporter
+  default as statsTask
 }
-from './importers/etoro';
+from './tasks/stats';
 
 export default function init() {
   // publish
@@ -14,22 +15,10 @@ export default function init() {
     active: true
   }));
 
-  if (repositories.assets.find().count() === 0) {
-    // import assets
-    let etoroInstruments = new etoroImporter({
-      ticker: 'SymbolFull',
-      name: 'InstrumentDisplayName',
-      icon: '@Images[0].Uri',
-      type: 'ExchangeID',
-      ref: 'InstrumentID'
-    }, 'https://api.etorostatic.com/sapi/instrumentsmetadata/V1.1/instruments');
-
-    for (let ei of etoroInstruments) {
-      try {
-        repositories.assets.insert(ei);
-      } catch (err) {}
-    }
-  }
+  // run tasks
+  SyncedCron.stop();
+  let statsTasks = new statsTask('every 5 mins');
+  SyncedCron.start();
 
   // secure repositories
   secureRepositories();
