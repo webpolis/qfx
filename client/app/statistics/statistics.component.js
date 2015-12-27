@@ -7,7 +7,10 @@ function statisticsDtv() {
     restrict: 'E',
     templateUrl: 'client/app/statistics/statistics.html',
     controllerAs: 'stats',
-    controller: statisticsCtl
+    controller: statisticsCtl,
+    scope: {
+      type: '='
+    }
   }
 }
 
