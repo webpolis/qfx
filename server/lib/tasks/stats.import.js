@@ -6,6 +6,8 @@ import {
 }
 from '../importers/csv';
 
+import * as models from '../../../lib/models/index';
+
 export default class statsTask extends task {
   constructor(...args) {
     super(...args);
@@ -20,10 +22,16 @@ export default class statsTask extends task {
         let csvForce = new csvImporter(null, 'https://raw.githubusercontent.com/webpolis/qfx/master/private/data/force.csv');
 
         for (let force of csvForce) {
-          try {
-            force.type = 'currencyForce';
-            repositories.statistics.insert(force);
-          } catch (err) {}
+          let currencies = Object.keys(force).filter((v) => {
+            return v !== 'period'
+          });
+
+          for (let c of currencies) {
+            try {
+              let stat = new models.stat(c, force[c], 'currencyForce', force.period);
+              repositories.statistics.insert(stat);
+            } catch (err) {}
+          }
         }
       }
     });

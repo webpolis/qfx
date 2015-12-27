@@ -24,11 +24,17 @@ function statisticsCtl($scope, $reactive, statisticsSvc) {
         type: 'currencyForce'
       });
     }
-  })
+  });
+
+  vm.avgCurrencyForce = avgCurrencyForce;
 
   init();
 
   function init() {
     statisticsSvc.init(reactiveCtx);
+  }
+
+  function avgCurrencyForce(stats = null) {
+    if (stats !== null) {}
   }
 }

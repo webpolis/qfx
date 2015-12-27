@@ -10,7 +10,7 @@ function assetsCtl($scope, $reactive, assetsSvc) {
     assets: () => {
       return assetsSvc.list({});
     }
-  })
+  });
 
   vm.search = search;
 
