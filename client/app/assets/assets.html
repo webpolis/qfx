@@ -19,6 +19,8 @@
                     <div class="card" ng-repeat="asset in assets.assets">
                         <div class="content">
                             <div class="header">{{asset.name}}</div>
+                            <div ng-if="asset.type === 'stock'" class="ui teal right ribbon label">{{asset.ticker}}</div>
+                            <div ng-if="asset.type === 'cross'" class="ui blue right ribbon label">FX</div>
                             <div ng-if="asset.description" class="description">
                                 {{asset.description}}
                             </div>
