@@ -11,6 +11,7 @@ export default function init() {
   Meteor.publish('assets.list', () => repositories.assets.find({
     active: true
   }));
+  Meteor.publish('statistics.list', () => repositories.statistics.find({}));
 
   // run tasks
   SyncedCron.stop();
