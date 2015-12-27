@@ -3,7 +3,7 @@
         <div class="column">
             <div class="ui search">
                 <div class="ui fluid icon input">
-                    <input class="prompt" type="text" placeholder="Search assets...">
+                    <input class="prompt" type="text" ng-model="query" placeholder="Search assets...">
                     <i class="search icon"></i>
                 </div>
                 <div class="results"></div>
@@ -16,11 +16,15 @@
         <div class="column">
             <div class="ui fluid container">
                 <div class="ui cards">
-                    <div class="card" ng-repeat="asset in assets.assets">
+                    <div class="card" ng-repeat="asset in assets.assets | filter:query | orderBy:['type', 'name']">
                         <div class="content">
                             <div class="header">{{asset.name}}</div>
-                            <div ng-if="asset.type === 'stock'" class="ui teal right ribbon label">{{asset.ticker}}</div>
-                            <div ng-if="asset.type === 'cross'" class="ui blue right ribbon label">FX</div>
+                            <div ng-if="asset.type === 'stock'" class="ui teal right ribbon label">
+                                <img class="ui image" ng-if="asset.icon" ng-src="{{asset.icon}}"> {{asset.ticker}}
+                            </div>
+                            <div ng-if="asset.type === 'cross'" class="ui blue right ribbon label">
+                                <img class="ui image" ng-if="asset.icon" ng-src="{{asset.icon}}"> FX
+                            </div>
                             <div ng-if="asset.description" class="description">
                                 {{asset.description}}
                             </div>
