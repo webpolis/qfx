@@ -3,7 +3,7 @@ instruments: https://api.etorostatic.com/sapi/instrumentsmetadata/V1.1/instrumen
 closing prices: https://www.etoro.com/sapi/candles/closingprices.json?client_request_id=e7037d74-14a0-41ef-be1a-1082ca7c6069
 */
 import importer from './importer';
-import * as models from '../models/index';
+import * as models from '../../../lib/models/index';
 
 export default class etoroImporter extends importer {
   constructor(...args) {

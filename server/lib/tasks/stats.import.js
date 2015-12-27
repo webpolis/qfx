@@ -4,7 +4,7 @@ import * as repositories from '../../../lib/repositories/index';
 import {
   default as csvImporter
 }
-from '../../../lib/importers/csv';
+from '../importers/csv';
 
 export default class statsTask extends task {
   constructor(...args) {
