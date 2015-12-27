@@ -25,3 +25,7 @@ service-configuration
 universe:modules
 pbastowski:require
 harrison:babyparse
+meteorhacks:npm
+
+
+npm-container
