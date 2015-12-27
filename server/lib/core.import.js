@@ -16,7 +16,7 @@ export default function init() {
   // run tasks
   SyncedCron.stop();
   let statsTask = new tasks.statsTask('every 5 mins');
-  let etoroTask = new tasks.etoroTask('on the first day of the week');
+  let etoroTask = new tasks.etoroTask('every 5 mins');
   SyncedCron.start();
 
   // secure repositories
