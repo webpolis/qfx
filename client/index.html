@@ -4,31 +4,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 </head>
 
-<body ng-app="app">
-    <div class="ui fluid container">
-        <div class="ui top attached menu">
-            <a class="item">
-                <i class="sidebar icon"></i>
-            </a>
-            <div class="right item">
-                <login-buttons></login-buttons>
-            </div>
+<body ng-app="app" class="app">
+    <div class="ui top attached inverted menu">
+        <a class="item">
+            <i class="sidebar icon"></i>
+        </a>
+        <div class="right item">
+            <login-buttons></login-buttons>
         </div>
-        <div class="ui bottom attached segment pushable">
-            <div class="ui inverted labeled icon left inline vertical sidebar menu">
-                <a class="item">
-                    <i class="home icon"></i> Markets
-                </a>
-                <a class="item">
-                    <i class="block layout icon"></i> Ideas
-                </a>
-                <a class="item">
-                    <i class="block layout icon"></i> Portfolio
-                </a>
-            </div>
-            <div class="pusher">
-                <div ng-include src="'client/app/assets/assets.html'"></div>
-            </div>
+    </div>
+    <div class="ui bottom attached segment pushable">
+        <div class="ui inverted labeled icon left inline vertical sidebar menu">
+            <a class="item">
+                <i class="home icon"></i> Markets
+            </a>
+            <a class="item">
+                <i class="block layout icon"></i> Ideas
+            </a>
+            <a class="item">
+                <i class="block layout icon"></i> Portfolio
+            </a>
+        </div>
+        <div class="pusher">
+            <div ng-include src="'client/app/assets/assets.html'"></div>
         </div>
     </div>
 </body>

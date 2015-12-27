@@ -16,5 +16,10 @@ function assetsCtl($scope, $reactive, assetsSvc) {
 
   function init() {
     assetsSvc.init(reactiveCtx);
+
+    // ui updates
+    $('.assets .search').search({
+      source: []
+    });
   }
 }
