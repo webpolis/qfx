@@ -12,13 +12,20 @@ export default function init() {
   // publish
   Meteor.publish('assets.list', () => repositories.assets.find({}));
 
-  // import
+  // import assets
   let etoroInstruments = new etoroImporter({
     ticker: 'SymbolFull',
     name: 'InstrumentDisplayName',
-    icon: 'Images[0].Uri',
-    type: 'ExchangeID'
-  });
+    icon: '@Images[0].Uri',
+    type: 'ExchangeID',
+    ref: 'InstrumentID'
+  }, 'https://api.etorostatic.com/sapi/instrumentsmetadata/V1.1/instruments');
+
+  for (let ei of etoroInstruments) {
+    try {
+      repositories.assets.insert(ei);
+    } catch (err) {}
+  }
 
   // secure repositories
   secureRepositories();

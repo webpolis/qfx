@@ -6,12 +6,10 @@ export default class importer {
     this.source = source;
     this.items = [];
 
-    this.init();
+    this.import();
   }
 
-  init() {
-
-  }
+  import () {}
 
   * [Symbol.iterator]() {
     for (let item of this.items) {
