@@ -1,9 +1,10 @@
 import task from './task';
+import * as repositories from '../../../lib/repositories/index';
 
 import {
   default as csvImporter
 }
-from '../importers/csv';
+from '../../../lib/importers/csv';
 
 export default class statsTask extends task {
   constructor(...args) {
@@ -15,10 +16,14 @@ export default class statsTask extends task {
       name: this.name,
       schedule: parser => parser.text(this.schedule),
       job: () => {
+        // currencies force
         let csvForce = new csvImporter(null, 'https://raw.githubusercontent.com/webpolis/qfx/master/private/data/force.csv');
 
         for (let force of csvForce) {
-          console.log(force);
+          try {
+            force.type = 'currencyForce';
+            repositories.statistics.insert(force);
+          } catch (err) {}
         }
       }
     });

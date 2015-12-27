@@ -1,8 +1,7 @@
 import * as repositories from '../../lib/repositories/index';
 
 export default function init() {
-  // secure repositories
-  repositories.assets.deny({
+  let denyAll = {
     update: function(userId, doc, fields, modifier) {
       return true;
     },
@@ -12,5 +11,9 @@ export default function init() {
     remove: function(userId, doc) {
       return true;
     }
-  })
+  };
+
+  // secure repositories
+  repositories.assets.deny(denyAll);
+  repositories.statistics.deny(denyAll);
 }
