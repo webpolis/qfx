@@ -2,6 +2,11 @@ sudo: required
 language: node_js
 node_js:
   - "5.3.0"
-
+services:
+  - mongodb
 before_install:
-  - "curl -L http://git.io/ejPSng | /bin/sh"
+  - "curl -L https://raw.githubusercontent.com/arunoda/travis-ci-laika/master/configure.sh | /bin/sh"
+before_script:
+  - "export PATH=$HOME/.meteor:$PATH"
+env: 
+  - LAIKA_OPTIONS="-t 5000"
