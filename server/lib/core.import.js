@@ -9,7 +9,10 @@ import * as tasks from './tasks/index';
 export default function init() {
   // publish
   Meteor.publish('assets.list', () => repositories.assets.find({
-    active: true
+    active: true,
+    type: {
+      $in: ['cross']
+    }
   }));
   Meteor.publish('statistics.list', () => repositories.statistics.find({}));
 
