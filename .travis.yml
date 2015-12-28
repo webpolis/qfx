@@ -5,8 +5,7 @@ node_js:
 services:
   - mongodb
 before_install:
-  - "curl -L https://raw.githubusercontent.com/arunoda/travis-ci-laika/master/configure.sh | /bin/sh"
+  - curl https://install.meteor.com | /bin/sh
+  - npm install -g meteorite
 before_script:
-  - "export PATH=$HOME/.meteor:$PATH"
-env: 
-  - LAIKA_OPTIONS="-t 5000"
+  - export PATH=$HOME/.meteor:$PATH
