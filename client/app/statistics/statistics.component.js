@@ -21,7 +21,7 @@ function statisticsCtl($scope, $reactive, statisticsSvc) {
   vm.helpers({
     currencyForce: () => {
       return statisticsSvc.list({
-        type: 'currencyForce'
+        type: Models.stat.types.currencyForce
       });
     }
   });
