@@ -23,7 +23,7 @@ export default class statsTask extends task {
 
         if (typeof csvForce[Symbol.iterator] === 'function') {
           repositories.statistics.remove({
-            type: models.stat.types.currencyForce
+            type: models.stat.types.force
           });
 
           for (let force of csvForce) {
@@ -33,7 +33,7 @@ export default class statsTask extends task {
 
             for (let c of currencies) {
               try {
-                let stat = new models.stat(c, force[c], models.stat.types.currencyForce, force.period);
+                let stat = new models.stat(c, force[c], models.stat.types.force, force.period);
                 repositories.statistics.insert(stat);
               } catch (err) {}
             }

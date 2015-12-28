@@ -1,6 +1,7 @@
 /*
 instruments: https://api.etorostatic.com/sapi/instrumentsmetadata/V1.1/instruments
 closing prices: https://www.etoro.com/sapi/candles/closingprices.json?client_request_id=e7037d74-14a0-41ef-be1a-1082ca7c6069
+https://www.etoro.com/sapi/candles/quickcharts.json/today/24?client_request_id=2f5eb542-c554-4ff0-9f68-64b142bceae3&instruments=[46,3
 */
 import importer from './importer';
 import * as models from '../../../lib/models/index';

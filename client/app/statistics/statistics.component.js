@@ -20,9 +20,9 @@ function statisticsCtl($scope, $reactive, statisticsSvc) {
   let reactiveCtx = $reactive(vm).attach($scope);
 
   vm.helpers({
-    currencyForce: () => {
+    force: () => {
       return statisticsSvc.list({
-        type: Models.stat.types.currencyForce
+        type: Models.stat.types.force
       });
     }
   });

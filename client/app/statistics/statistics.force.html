@@ -1,0 +1,16 @@
+<div class="ui two column grid force" ng-if="asset">
+    <div class="column">
+        <div class="ui segment">
+            <div class="ui circular label" ng-class="{'red': stat.value < 0, 'green': stat.value > 0}" ng-repeat="stat in stats.force | filter:{asset: asset.ticker.slice(0, 3)}">
+                {{stat.period}}
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="ui segment">
+            <div class="ui circular label" ng-class="{'red': stat.value < 0, 'green': stat.value > 0}" ng-repeat="stat in stats.force | filter:{asset: asset.ticker.slice(-3)}">
+                {{stat.period}}
+            </div>
+        </div>
+    </div>
+</div>
