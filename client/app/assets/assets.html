@@ -10,7 +10,6 @@
             </div>
         </div>
         <div class="column">
-            <statistics type="Models.stat.types.currencyForce"></statistics>
         </div>
         <div class="column"></div>
     </div>
@@ -27,8 +26,10 @@
                             <div ng-if="asset.type === 'cross'" class="ui blue right ribbon label">
                                 <img class="ui image" ng-if="false" ng-src="{{asset.icon}}"> FX
                             </div>
-                            <div ng-if="asset.description" class="description">
+                            <div class="ui hidden divider"></div>
+                            <div class="description">
                                 {{asset.description}}
+                                <statistics type="Models.stat.types.currencyForce" ng-if="asset.type === 'cross'" asset="asset"></statistics>
                             </div>
                         </div>
                         <div class="ui bottom attached button">

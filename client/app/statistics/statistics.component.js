@@ -9,7 +9,8 @@ function statisticsDtv() {
     controllerAs: 'stats',
     controller: statisticsCtl,
     scope: {
-      type: '='
+      type: '=',
+      asset: '='
     }
   }
 }
@@ -26,15 +27,9 @@ function statisticsCtl($scope, $reactive, statisticsSvc) {
     }
   });
 
-  vm.avgCurrencyForce = avgCurrencyForce;
-
   init();
 
   function init() {
     statisticsSvc.init(reactiveCtx);
-  }
-
-  function avgCurrencyForce(stats = null) {
-    if (stats !== null) {}
   }
 }
