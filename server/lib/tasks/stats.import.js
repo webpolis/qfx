@@ -21,16 +21,22 @@ export default class statsTask extends task {
         // currencies force
         let csvForce = new csvImporter(null, 'https://raw.githubusercontent.com/webpolis/qfx/master/private/data/force.csv');
 
-        for (let force of csvForce) {
-          let currencies = Object.keys(force).filter((v) => {
-            return v !== 'period'
+        if (typeof csvForce[Symbol.iterator] === 'function') {
+          repositories.statistics.remove({
+            type: models.stat.types.currencyForce
           });
 
-          for (let c of currencies) {
-            try {
-              let stat = new models.stat(c, force[c], 'currencyForce', force.period);
-              repositories.statistics.insert(stat);
-            } catch (err) {}
+          for (let force of csvForce) {
+            let currencies = Object.keys(force).filter((v) => {
+              return v !== 'period'
+            });
+
+            for (let c of currencies) {
+              try {
+                let stat = new models.stat(c, force[c], models.stat.types.currencyForce, force.period);
+                repositories.statistics.insert(stat);
+              } catch (err) {}
+            }
           }
         }
       }
