@@ -7,3 +7,8 @@ export {
   default as etoroTask
 }
 from './etoro';
+
+export {
+  default as priceTask
+}
+from './price';
