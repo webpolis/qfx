@@ -13,9 +13,8 @@ function config(assetsSvcProvider, statisticsSvcProvider) {
     },
     statistics: {
       list: 'statistics.list',
-      force: {
-        minmax: 'statistics.force.minmax'
-      }
+      minmax: 'statistics.minmax',
+      avg: 'statistics.avg'
     }
   };
 

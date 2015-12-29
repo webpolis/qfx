@@ -24,6 +24,12 @@ function statisticsCtl($scope, $reactive, statisticsSvc) {
       return statisticsSvc.list({
         type: Models.stat.types.force
       });
+    },
+    minmax: () => {
+      return statisticsSvc.minmax();
+    },
+    avg: () => {
+      return statisticsSvc.avg();
     }
   });
 

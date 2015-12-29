@@ -17,14 +17,22 @@ function statisticsPvd() {
       init: function(context = null) {
         if (context != null) {
           context.subscribe(subscriptions.list);
-          context.subscribe(subscriptions.force.minmax);
+          context.subscribe(subscriptions.minmax);
+          context.subscribe(subscriptions.avg);
         }
       },
       list: function(conditions = {}) {
         return Repositories.statistics.find(conditions);
       },
-      minmax: function(type = null) {
+      minmax: function() {
+        let collection = Meteor.Collection.get(subscriptions.minmax) || new Meteor.Collection(subscriptions.minmax);
 
+        return collection.find({});
+      },
+      avg: function() {
+        let collection = Meteor.Collection.get(subscriptions.avg) || new Meteor.Collection(subscriptions.avg);
+
+        return collection.find({});
       }
     }
   }

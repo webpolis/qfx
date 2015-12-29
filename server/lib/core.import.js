@@ -7,6 +7,8 @@ from './security';
 import * as tasks from './tasks/index';
 
 export default function init() {
+  // @todo refactor publishes below; make it part of different module
+
   // publish collections
   Meteor.publish('assets.list', () => repositories.assets.find({
     active: true,
@@ -19,11 +21,11 @@ export default function init() {
   Meteor.publish('prices.list', () => repositories.prices.find({}));
 
   // some stats
-  Meteor.publish('statistics.force.minmax', function() {
+  Meteor.publish('statistics.minmax', function() {
     let self = this;
     let minmax = repositories.statistics.aggregate([{
       $group: {
-        _id: null,
+        _id: '$type',
         min: {
           $min: '$value'
         },
@@ -34,7 +36,30 @@ export default function init() {
     }]);
 
     for (let s of minmax) {
-      self.added('statistics.force.minmax', s._id, s);
+      self.added('statistics.minmax', s._id, s);
+    }
+
+    self.ready();
+  });
+
+  Meteor.publish('statistics.avg', function() {
+    let self = this;
+    let avg = repositories.statistics.aggregate([{
+      $group: {
+        _id: '$asset',
+        avg: {
+          $avg: '$value'
+        }
+      }
+    }]);
+
+    let values = avg.map(e => e.avg);
+
+    for (let s of avg) {
+      s.min = Math.min(...values);
+      s.max = Math.max(...values);
+
+      self.added('statistics.avg', s._id, s);
     }
 
     self.ready();
@@ -42,7 +67,7 @@ export default function init() {
 
   // run tasks
   SyncedCron.stop();
-  let statsTask = new tasks.statsTask('every 10 mins');
+  let statsTask = new tasks.statsTask('every 2 mins');
   let etoroTask = new tasks.etoroTask('on the first day of the week');
   let priceTask = new tasks.priceTask('every 1 mins');
   SyncedCron.start();
