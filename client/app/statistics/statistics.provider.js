@@ -17,10 +17,14 @@ function statisticsPvd() {
       init: function(context = null) {
         if (context != null) {
           context.subscribe(subscriptions.list);
+          context.subscribe(subscriptions.force.minmax);
         }
       },
       list: function(conditions = {}) {
         return Repositories.statistics.find(conditions);
+      },
+      minmax: function(type = null) {
+
       }
     }
   }

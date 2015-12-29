@@ -12,7 +12,10 @@ function config(assetsSvcProvider, statisticsSvcProvider) {
       list: 'assets.list'
     },
     statistics: {
-      list: 'statistics.list'
+      list: 'statistics.list',
+      force: {
+        minmax: 'statistics.force.minmax'
+      }
     }
   };
 

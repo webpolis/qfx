@@ -31,3 +31,4 @@ meteorhacks:npm
 npm-container
 http
 percolate:synced-cron
+meteorhacks:aggregate
