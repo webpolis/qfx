@@ -1,15 +1,15 @@
 <div class="ui two column grid force" ng-if="asset">
     <div class="column">
         <div class="ui segment">
-            <div class="ui circular label" ng-class="{'red': stat.avg < 0, 'green': stat.avg > 0}" ng-repeat="stat in stats.avg | filter:{_id: asset.ticker.slice(0, 3)}">
-                {{stat.avg}}
+            <div ng-repeat="stat in stats.avg | filter:{_id: asset.ticker.slice(0, 3)}">
+                <heat stat="stat"></heat>
             </div>
         </div>
     </div>
     <div class="column">
         <div class="ui segment">
-            <div class="ui circular label" ng-class="{'red': stat.avg < 0, 'green': stat.avg > 0}" ng-repeat="stat in stats.avg | filter:{_id: asset.ticker.slice(-3)}">
-                {{stat.avg}}
+            <div ng-repeat="stat in stats.avg | filter:{_id: asset.ticker.slice(-3)}">
+                <heat stat="stat"></heat>
             </div>
         </div>
     </div>
