@@ -2,7 +2,4 @@
 
 # qfx.club
 
-## demo (WIP)
-
-[qfx.meteor.com](http://qfx.meteor.com)
 
