@@ -54,10 +54,12 @@ export default function init() {
     }]);
 
     let values = avg.map(e => e.avg);
+    let min = Math.min(...values);
+    let max = Math.max(...values);
 
     for (let s of avg) {
-      s.min = Math.min(...values);
-      s.max = Math.max(...values);
+      s.min = min;
+      s.max = max;
 
       self.added('statistics.avg', s._id, s);
     }
